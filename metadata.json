@@ -1,0 +1,6 @@
+{
+  "name": "Happy Nails — Kingston upon Thames",
+  "description": "A little luxury, made just for you. Bespoke nail care, gel manicures, extensions, and botanical pedicures in Kingston upon Thames, UK.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
