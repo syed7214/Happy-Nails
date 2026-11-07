@@ -586,7 +586,7 @@ export default function App() {
 
               {/* Interactive Filter Controls */}
               <div
-                className="flex flex-wrap items-center gap-1.5 bg-white/70 p-1.5 rounded-full border border-[#0B3B2E]/10"
+                className="flex items-center gap-1.5 overflow-x-auto max-w-full bg-white/85 p-1.5 rounded-2xl sm:rounded-full border border-[#0B3B2E]/10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                 role="tablist"
                 aria-label="Filter nail gallery"
               >
@@ -605,9 +605,9 @@ export default function App() {
                     role="tab"
                     aria-selected={galleryFilter === tag}
                     onClick={() => setGalleryFilter(tag)}
-                    className={`px-4 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
+                    className={`px-3.5 sm:px-4 py-2 sm:py-1.5 rounded-xl sm:rounded-full text-xs font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                       galleryFilter === tag
-                        ? 'bg-[#0B3B2E] text-[#F6F0E9]'
+                        ? 'bg-[#0B3B2E] text-[#F6F0E9] shadow-xs'
                         : 'text-[#0B3B2E]/75 hover:text-[#0B3B2E]'
                     }`}
                   >

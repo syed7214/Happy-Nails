@@ -203,16 +203,16 @@ export const BookingFlow: React.FC<BookingFlowProps> = ({
     <div className="w-full">
       {/* Stepper Header (Steps 1-3) */}
       {step < 4 && (
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <div
-            className="grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl mx-auto"
+            className="grid grid-cols-3 gap-2 sm:gap-5 max-w-2xl mx-auto bg-white/50 sm:bg-transparent p-1.5 sm:p-0 rounded-2xl border border-[#0B3B2E]/10 sm:border-0"
             role="navigation"
             aria-label="Booking progress"
           >
             {[
-              { num: 1, label: 'Choose Service' },
-              { num: 2, label: 'Select Time' },
-              { num: 3, label: 'Confirm' },
+              { num: 1, label: 'Choose Service', mobileLabel: 'Service' },
+              { num: 2, label: 'Select Time', mobileLabel: 'Date & Time' },
+              { num: 3, label: 'Confirm', mobileLabel: 'Confirm' },
             ].map((item) => {
               const isActive = step === item.num;
               const isDone = step > item.num;
@@ -224,31 +224,34 @@ export const BookingFlow: React.FC<BookingFlowProps> = ({
                     if (selectedServices.length === 0 && item.num > 1) return;
                     setStep(item.num as 1 | 2 | 3);
                   }}
-                  className={`group flex flex-col items-start text-left p-3.5 sm:p-4 rounded-2xl transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B3B2E] ${
+                  className={`group flex flex-col items-center sm:items-start text-center sm:text-left p-2.5 sm:p-4 rounded-xl sm:rounded-2xl transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B3B2E] ${
                     isActive
-                      ? 'frosted-card border-[#0B3B2E]/30 shadow-sm ring-1 ring-[#0B3B2E]/20'
+                      ? 'frosted-card border-[#0B3B2E]/30 shadow-xs ring-1 ring-[#0B3B2E]/20'
                       : isDone
-                      ? 'bg-white/60 hover:bg-white/85 border border-white/80'
-                      : 'bg-white/45 hover:bg-white/75 border border-white/60 opacity-85 hover:opacity-100'
+                      ? 'bg-white/70 hover:bg-white/90 border border-white/80'
+                      : 'bg-white/40 hover:bg-white/75 border border-transparent sm:border-white/60 opacity-85 hover:opacity-100'
                   }`}
                 >
-                  <div className="flex items-center justify-between w-full mb-1.5">
-                    <span className="text-[11px] uppercase tracking-[0.18em] text-[#3F6B58] font-medium">
+                  <div className="flex items-center justify-center sm:justify-between w-full gap-1.5 mb-1 sm:mb-1.5">
+                    <span className="hidden sm:inline text-[11px] uppercase tracking-[0.18em] text-[#3F6B58] font-medium">
                       Step 0{item.num}
                     </span>
                     <span
-                      className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium tabular-nums transition-colors ${
+                      className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[11px] sm:text-xs font-medium tabular-nums transition-colors shrink-0 ${
                         isDone
                           ? 'bg-[#3F6B58] text-[#F6F0E9]'
                           : isActive
                           ? 'bg-[#0B3B2E] text-[#F6F0E9]'
-                          : 'bg-[#0B3B2E]/10 text-[#0B3B2E]/60'
+                          : 'bg-[#0B3B2E]/10 text-[#0B3B2E]/65'
                       }`}
                     >
-                      {isDone ? <Check className="w-3.5 h-3.5" /> : item.num}
+                      {isDone ? <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> : item.num}
                     </span>
                   </div>
-                  <span className="font-serif text-base sm:text-lg font-semibold text-[#0B3B2E] whitespace-nowrap truncate w-full">
+                  <span className="sm:hidden font-serif text-sm font-semibold text-[#0B3B2E] leading-tight whitespace-nowrap">
+                    {item.mobileLabel}
+                  </span>
+                  <span className="hidden sm:block font-serif text-lg font-semibold text-[#0B3B2E] whitespace-nowrap truncate w-full">
                     {item.label}
                   </span>
                 </button>
